@@ -1,0 +1,13 @@
+Evaluating model...
+Traceback (most recent call last):
+  File "models/train_classifier.py", line 118, in <module>
+    main()
+  File "models/train_classifier.py", line 103, in main
+    evaluate_model(model, X_test, Y_test, category_names)
+  File "models/train_classifier.py", line 80, in evaluate_model
+    print(classification_report(X_test, predicted, target_names=category_names))
+  File "/opt/conda/lib/python3.6/site-packages/sklearn/metrics/classification.py", line 1421, in classification_report
+    labels = unique_labels(y_true, y_pred)
+  File "/opt/conda/lib/python3.6/site-packages/sklearn/utils/multiclass.py", line 83, in unique_labels
+    raise ValueError("Mix type of y not allowed, got types %s" % ys_types)
+ValueError: Mix type of y not allowed, got types {'multilabel-indicator', 'multiclass'}
