@@ -12,7 +12,7 @@
     `python run.py`
 
 3. Go to http://0.0.0.0:3001/
-# Disaster-Recovery-Pipeline
+# Disaster Response Pipeline
 
 In the event of a disaster, and in an effort to get help, persons send messages in order to get emergency
 help. This application uses an ETL model, a machine learning model to import messages, use NLP 
