@@ -21,7 +21,7 @@ can assist when needed. Please follow below for installation instructions and de
 
 
 
-1. Installation
+##Installation
 
 - To run the application, navigate to the `app` directory and execute `python run.py`. This will start 
 the application.
@@ -29,7 +29,7 @@ the application.
 - For usage, type in text as required.
 
 
-2. Dependencies
+##Dependencies
 
 - json
 - plotly
@@ -41,7 +41,7 @@ the application.
 - Python 3.6
 
 
-3. File Descriptions
+##File Descriptions
 
 - **run.py**: script to execute application.
 - **train_classifier.py**: script to train classifier using MultiOutputClassifier.
