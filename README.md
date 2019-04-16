@@ -23,20 +23,29 @@ can assist when needed. Please follow below for installation instructions and de
 
 1. Installation
 
-
+- To run the application, navigate to the `app` directory and execute `python run.py`. This will start 
+the application.
+- To open the web app on the browser, go to **http//0.0.0.0:3001/**.
+- For usage, type in text as required.
 
 
 2. Dependencies
 
+- json
+- plotly
+- pandas
+- word_tokenize
+- WordNetLemmatizer
+- Flask (render_template, jsonify, request)
+- sqlalchemy
+- Python 3.6
 
-3. Motivations
+
+3. File Descriptions
+
+- **run.py**: script to execute application.
+- **train_classifier.py**: script to train classifier using MultiOutputClassifier.
+- **process_data.py**: ETL (Extract Transform Load) script. Imports both `disaster_categories.csv` and
+`disaster_messages.csv`, merges and cleans datasets and extracts to `DisasterResponse.db`.
 
 
-
-
-4. File Descriptions
-
-
-
-
-5. Licenses
