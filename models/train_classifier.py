@@ -21,6 +21,15 @@ from sklearn.metrics import classification_report
 from sklearn.pipeline import Pipeline
 
 def load_data(database_filepath):
+    """
+    Load data from database
+
+    Import data from sqlite database, extract X values from message variable,
+    extract y values from 36 columns.
+
+    :param database_filepath: filepath of database to import data from
+    :return: array of X, y, and names of columns.
+    """
     engine = create_engine('sqlite:///' + database_filepath)
     df = pd.read_sql_table(table_name='messages', con=engine)
     df.related = df.related.replace(2,1)
@@ -42,6 +51,15 @@ def load_data(database_filepath):
 
 
 def tokenize(text):
+    """
+    Tokenize text and return clean tokens
+
+    Replace urls with placeholder `urlplaceholder`, transform text to
+    lowercase, strip all whitespace, tokenize text.
+
+    :param text: string of words
+    :return: array of string text
+    """
     url_regex = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
     
     detected_urls = re.findall(url_regex, text)
@@ -60,7 +78,14 @@ def tokenize(text):
 
 
 def build_model():
-    
+    """
+    Train model
+
+    Using a pipeline, chain CountVectorizer, TfidfTransformer, MultiOutputClassifier to
+    train this model. Also, using certain parameters, use GridSearch to find the best parameters.
+
+    :return: model
+    """
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
         ('tfidf', TfidfTransformer()),
@@ -79,6 +104,18 @@ def build_model():
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
+    """
+    Show scores for predictions of model
+
+    Prints a classification report of accuracy, precision, recall scores
+    for each category name.
+
+    :param model: already trained model
+    :param X_test: array of nums
+    :param Y_test: array of nums
+    :param category_names: array of string to match columns to names
+
+    """
     predicted = model.predict(X_test)
     accuracy = (predicted == Y_test).mean()
     
@@ -88,6 +125,12 @@ def evaluate_model(model, X_test, Y_test, category_names):
           
           
 def save_model(model, model_filepath):
+    """
+    Take inported model and save to designated filepath
+
+    :param model: model to be saved
+    :param model_filepath: string filepath to save
+    """
     pickle.dump(model, open(model_filepath, 'wb'))
           
           

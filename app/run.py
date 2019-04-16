@@ -15,6 +15,12 @@ from sqlalchemy import create_engine
 app = Flask(__name__)
 
 def tokenize(text):
+    """
+    Text is transformed to lowercase, stripped, and tokenized.
+
+    :param text: string that contains more than one word
+    :return:  array of string text that has been cleaned.
+    """
     tokens = word_tokenize(text)
     lemmatizer = WordNetLemmatizer()
 
