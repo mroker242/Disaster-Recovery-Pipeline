@@ -43,6 +43,7 @@ model = joblib.load("../models/classifier.pkl")
 @app.route('/')
 @app.route('/index')
 def index():
+    """ Home page which displays visual of Distribution of Message Genres."""
     
     # extract data needed for visuals
     # TODO: Below is an example - modify to extract data for your own visuals
@@ -84,6 +85,11 @@ def index():
 # web page that handles user query and displays model results
 @app.route('/go')
 def go():
+    """
+    Processes query, runs a prediction on a model, retrieve the classification results and displays them.
+
+    :return: template html page (go.html)
+    """
     # save user input in query
     query = request.args.get('query', '') 
 
@@ -102,6 +108,7 @@ def go():
 
 
 def main():
+    """Run application on host 0.0.0.0 and port 3001"""
     app.run(host='0.0.0.0', port=3001, debug=True)
 
 

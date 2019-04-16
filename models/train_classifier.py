@@ -135,6 +135,10 @@ def save_model(model, model_filepath):
           
           
 def main():
+    """
+    Retrieve database filepath, model filepath from sys.argv. Retrieve X, Y, and Category names from
+    load_data function. Split dataset, run build_model, fit model, evaluate model, and save model.
+    """
     if len(sys.argv) == 3:
         database_filepath, model_filepath = sys.argv[1:]
         print('Loading data...\n    DATABASE: {}'.format(database_filepath))

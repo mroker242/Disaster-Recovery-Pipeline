@@ -88,6 +88,9 @@ def save_data(df, database_filename):
 
 
 def main():
+    """
+    Retrieve arguments from sys.argv, run load_data to retrieve dataframe, save data.
+    """
     if len(sys.argv) == 4:
 
         messages_filepath, categories_filepath, database_filepath = sys.argv[1:]
