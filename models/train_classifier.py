@@ -33,12 +33,6 @@ def load_data(database_filepath):
     engine = create_engine('sqlite:///' + database_filepath)
     df = pd.read_sql_table(table_name='messages', con=engine)
     df.related = df.related.replace(2,1)
-    # trying this
-    df.drop(columns='related', axis=1, inplace=True)
-    df.message = df.message.astype(str)
-    for i in df.iloc[:,4:40]:
-        df[i] = df[i].astype(int)
-        #print(df[i].value_counts())
     X = df.message.values
     y = df.iloc[:,4:40].values
     
@@ -144,10 +138,7 @@ def main():
         print('Loading data...\n    DATABASE: {}'.format(database_filepath))
         X, Y, category_names = load_data(database_filepath)
         X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2)
-        print('X_train:', X_train.shape)
-        print('Y_train:', Y_train.shape)
-        print('X_test:', X_test.shape)
-        print('Y_test:', Y_test.shape)
+
  
         
         print('Building model...')

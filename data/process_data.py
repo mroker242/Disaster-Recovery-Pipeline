@@ -40,8 +40,8 @@ def clean_data(df):
     columns = []
     for var in list(categories.iloc[1]):
         columns.append(var[0:-2])
-    print('Clean data columns: \n')
-    print(columns)
+    # print('Clean data columns: \n')
+    # print(columns)
 
     # use this row to extract a list of new column names for categories.
     # one way is to apply a lambda function that takes everything 
@@ -68,8 +68,7 @@ def clean_data(df):
     
     # drop duplicates
     df.drop_duplicates(inplace=True)
-    
-    print(df.info())
+
     
     return df
     
