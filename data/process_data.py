@@ -5,6 +5,13 @@ from sqlalchemy import create_engine
 
 
 def load_data(messages_filepath, categories_filepath):
+    """
+    Import data and merge.
+
+    :param messages_filepath: (string) filepath to be imported.
+    :param categories_filepath: (string) filepath to be imported.
+    :return: dataframe
+    """
     messages = pd.read_csv(messages_filepath)
     categories = pd.read_csv(categories_filepath)
     
@@ -15,6 +22,15 @@ def load_data(messages_filepath, categories_filepath):
     
 
 def clean_data(df):
+    """
+    Perform cleaning techniques on data.
+
+    Create dataframe on the 36 category columns, convert fields to numeric, concatenate categories
+    dataframe to main dataframe, drop duplicates.
+
+    :param df: dataframe
+    :return: cleaned dataframe
+    """
     # create a dataframe of the 36 individual category columns
     categories = df.categories.str.split(';', expand=True)
     
@@ -61,6 +77,12 @@ def clean_data(df):
 
 
 def save_data(df, database_filename):
+    """
+    Import dataframe and save to specified filename
+
+    :param df: dataframe
+    :param database_filename: (string) filename
+    """
     engine = create_engine('sqlite:///' + database_filename)
     df.to_sql('messages', engine, index=False)  
 
